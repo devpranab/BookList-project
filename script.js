@@ -34,14 +34,28 @@ class UI{
     document.getElementById("b-author").value = "";
     document.getElementById("b-isbn").value = "";
   }
+  showAlert(message, className){//method 03
+let div = document.createElement("div");
+div.className = `alert ${className}`;
+div.appendChild(document.createTextNode(message));
+let container = document.querySelector(".container");
+let form = document.querySelector("#book-form");
+container.insertBefore(div, form);
+
+setTimeout(() =>{
+  document.querySelector(".alert").remove();
+}, 3000);
+
+  }
 }
 
 //Add addEventListener
 form.addEventListener("submit", newBook);
 
+
 //Define function
 function newBook(e){
-  console.log("Hi");
+  console.log("Hi checked");
 
   //input value start
   let title = document.getElementById("b-title").value;
@@ -49,16 +63,26 @@ function newBook(e){
   let isbn = document.getElementById("b-isbn").value;
   //input value end
 
-  //call from book class
-  let book = new Book(title, author, isbn);
+  let ui = new UI();
+  //validation start with condtion
+  if(title === "" | author === "" | isbn === ""){
+//alert("alert")
+ui.showAlert("Please fill all the fields", "error");//pass message & class
+}else{
+//call from book class start
+let book = new Book(title, author, isbn);
+//call from book class end
 
-   //call from ui class
-   let ui = new UI();
-   ui.addToBookList(book); //pass book obj
-   ui.emptyForm();
+ //call from ui class start
+ ui.addToBookList(book); //pass book obj
+ ui.emptyForm();
+ ui.showAlert("New book added", "success");//pass message & class
+ //call from ui class end
 
+}
+  //validation end with condtion
 
-
+  
   //for data hide problem
   e.preventDefault();
 
