@@ -1,0 +1,31 @@
+*{
+    margin: 0;
+    padding: 0;
+}
+body{
+    background: #fff;
+}
+.text-center{
+    text-align: center;
+    margin-top: 5px;
+}
+
+.full-w{
+    width: 100%;
+}
+#submit{
+    color: #fff;
+    background-color: black;
+}
+
+.success, .error{
+    color: #fff;
+    padding: 5px;
+    margin: 5px 0 15px 0;
+}
+.success{
+    background: green;
+}
+.error{
+    background: red;
+}

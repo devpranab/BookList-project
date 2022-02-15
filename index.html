@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Book List</title>
+     <!-- skeleton cdn link -->
+     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/skeleton/2.0.4/skeleton.min.css"/>
+     <link rel="stylesheet" href="style.css">
+
+</head>
+<body>
+    
+<h4 class="text-center">Book List with OOP</h3>
+<div class="container">
+        <form action="" id="book-form">
+            <div>
+                <label for="b-title">Book Title</label>
+                <input type="text" id="b-title" class="full-w">
+            </div>
+            <div>
+                <label for="b-author">Author Name</label>
+                <input type="text" id="b-author" class="full-w">
+            </div>
+            <div>
+                <label for="b-isbn">ISBN Number</label>
+                <input type="text" id="b-isbn" class="full-w">
+            </div>
+            <div>
+                <input type="submit" value="submit" id="submit" class="full-w">
+            </div>
+        </form>
+
+<!-- submitted data saved bellow -->
+        <table class="full-w">
+            <thead>
+                <tr>
+                    <th>Book Title</th>
+                    <th>Author Name</th>
+                    <th>ISBN Number</th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody id="book-list">
+
+            </tbody>
+        </table>
+</div>
+
+
+<script src="script.js"></script>
+</body>
+</html>
