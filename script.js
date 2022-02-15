@@ -53,6 +53,7 @@ setTimeout(() =>{
     //console.log(target);
     //console.log(target.parentElement.parentElement);
     target.parentElement.parentElement.remove();
+    UI.showAlert("Book removed", "success");
     }  
 
   }
@@ -101,7 +102,7 @@ let book = new Book(title, author, isbn);
 function removeBook(e){
   //let ui = new UI();//no need
   UI.deleteFromBook(e.target);
-  UI.showAlert("Book removed", "success");
+  // UI.showAlert("Book removed", "success");
 
    //for data hide problem
    e.preventDefault();
