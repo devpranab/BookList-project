@@ -13,10 +13,10 @@ class Book{
 
 //UI class object
 class UI{
-  constructor(){
+//   constructor(){//no property so write static methods
 
-}
-  addToBookList(book){ //method 01
+// }
+  static addToBookList(book){ //method 01
     //console.log(book);
     let list = document.getElementById("book-list");
     let row = document.createElement("tr");
@@ -29,12 +29,12 @@ class UI{
       list.appendChild(row);
 
   }
-  emptyForm(){ //method 02
+  static emptyForm(){ //method 02
     document.getElementById("b-title").value = "";
     document.getElementById("b-author").value = "";
     document.getElementById("b-isbn").value = "";
   }
-  showAlert(message, className){//method 03
+  static showAlert(message, className){//method 03
 let div = document.createElement("div");
 div.className = `alert ${className}`;
 div.appendChild(document.createTextNode(message));
@@ -47,15 +47,25 @@ setTimeout(() =>{
 }, 3000);
 
   }
+  static deleteFromBook(target){
+    //console.log(target); 
+    if(target.hasAttribute("href")){
+    //console.log(target);
+    //console.log(target.parentElement.parentElement);
+    target.parentElement.parentElement.remove();
+    }  
+
+  }
 }
 
 //Add addEventListener
 form.addEventListener("submit", newBook);
+bookList.addEventListener("click", removeBook);
 
 
 //Define function
 function newBook(e){
-  console.log("Hi checked");
+  //console.log("Hi checked");
 
   //input value start
   let title = document.getElementById("b-title").value;
@@ -63,20 +73,20 @@ function newBook(e){
   let isbn = document.getElementById("b-isbn").value;
   //input value end
 
-  let ui = new UI();
+  //let ui = new UI();
   //validation start with condtion
   if(title === "" | author === "" | isbn === ""){
 //alert("alert")
-ui.showAlert("Please fill all the fields", "error");//pass message & class
+UI.showAlert("Please fill all the fields", "error");//pass message & class
 }else{
 //call from book class start
 let book = new Book(title, author, isbn);
 //call from book class end
 
  //call from ui class start
- ui.addToBookList(book); //pass book obj
- ui.emptyForm();
- ui.showAlert("New book added", "success");//pass message & class
+ UI.addToBookList(book); //pass book obj
+ UI.emptyForm();
+ UI.showAlert("New book added", "success");//pass message & class
  //call from ui class end
 
 }
@@ -86,4 +96,13 @@ let book = new Book(title, author, isbn);
   //for data hide problem
   e.preventDefault();
 
+}
+
+function removeBook(e){
+  //let ui = new UI();//no need
+  UI.deleteFromBook(e.target);
+  UI.showAlert("Book removed", "success");
+
+   //for data hide problem
+   e.preventDefault();
 }
